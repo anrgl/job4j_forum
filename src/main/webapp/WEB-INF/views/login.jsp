@@ -17,6 +17,11 @@
     <div class="row">
         <h4>Авториизация на форум job4j</h4>
     </div>
+    <c:if test="${not empty errorMessage}">
+        <div style="color:red; font-weight: bold; margin: 30px 0;">
+                ${errorMessage}
+        </div>
+    </c:if>
     <div class="row">
         <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group">
@@ -28,6 +33,7 @@
                 <input type="password" name="password" id="password" class="form-control">
             </div>
             <input type="submit" value="Sign in" class="btn btn-primary">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
         <a href="<c:url value="${pageContext.request.contextPath}/reg"/>">Зарегестрироваться!</a>
     </div>

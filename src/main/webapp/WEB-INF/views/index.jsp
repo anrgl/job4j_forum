@@ -16,6 +16,7 @@
 <div class="container mt-3">
     <div class="row">
         <h4>Форум job4j</h4>
+        <p><c:out value="${user.username}"/>, <a href="<c:url value="/logout" />">logout</a></p>
     </div>
     <div class="row">
         <table class="table">
