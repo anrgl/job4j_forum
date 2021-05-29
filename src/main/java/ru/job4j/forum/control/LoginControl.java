@@ -24,11 +24,9 @@ public class LoginControl {
 
     @PostMapping("/login")
     public String login(@ModelAttribute User user) {
-        Optional<User> u = users.findByUsername(user.getUsername());
+        Optional<User> u = users.findByCredentials(user.getUsername(), user.getPassword());
         if (u.isPresent()) {
-            if (u.get().getPassword().equals(user.getPassword())) {
-                return "redirect:/";
-            }
+            return "redirect:/";
         }
         return "redirect:/login?error=true";
     }

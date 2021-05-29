@@ -31,4 +31,13 @@ public class UserService {
         }
         return Optional.empty();
     }
+
+    public Optional<User> findByCredentials(String username, String password) {
+        for (User user : users) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                return Optional.of(user);
+            }
+        }
+        return Optional.empty();
+    }
 }
