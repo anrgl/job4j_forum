@@ -19,6 +19,7 @@ services:
 
 before_script:
   - psql -c 'create database forum;' -U postgres
+  - psql -U postgres -d forum -a -f db/schema.sql
 
 script:
   - mvn test -B

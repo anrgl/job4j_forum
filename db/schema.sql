@@ -1,4 +1,4 @@
-create database forum;
+-- create database forum;
 
 create table posts
 (
