@@ -64,4 +64,11 @@ public class PostControl {
         }
         return "redirect:/post/edit?id=" + id;
     }
+
+    @PostMapping("/post/delete")
+    public String delete(@RequestParam int id) {
+        Optional<Post> p = posts.findById(id);
+        posts.delete(id);
+        return "redirect:/";
+    }
 }

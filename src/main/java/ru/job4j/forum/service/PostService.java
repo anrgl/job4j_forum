@@ -29,4 +29,8 @@ public class PostService {
     public void save(Post post) {
         posts.save(post);
     }
+
+    public void delete(int id) {
+        posts.deleteById(id);
+    }
 }
