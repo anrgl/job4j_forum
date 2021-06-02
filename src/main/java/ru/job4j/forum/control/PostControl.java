@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
 
+import java.util.GregorianCalendar;
 import java.util.Optional;
 
 @Controller
@@ -36,6 +37,7 @@ public class PostControl {
 
     @PostMapping("/create")
     public String create(@ModelAttribute Post post) {
+        post.setCreated(new GregorianCalendar());
         posts.save(post);
         return "redirect:/";
     }
@@ -53,7 +55,20 @@ public class PostControl {
 
     @PostMapping("/post/update")
     public String edit(@RequestParam int id, @ModelAttribute Post post) {
-        posts.update(id, post);
-        return "redirect:/post?id=" + id;
+        Optional<Post> p = posts.findById(id);
+        if (p.isPresent()) {
+            post.setCreated(p.get().getCreated());
+            post.setId(id);
+            posts.save(post);
+            return "redirect:/post?id=" + id;
+        }
+        return "redirect:/post/edit?id=" + id;
+    }
+
+    @PostMapping("/post/delete")
+    public String delete(@RequestParam int id) {
+        Optional<Post> p = posts.findById(id);
+        posts.delete(id);
+        return "redirect:/";
     }
 }

@@ -14,6 +14,12 @@ env:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database forum;' -U postgres
+
 script:
   - mvn test -B
 
