@@ -28,4 +28,13 @@ public class UserService {
     public List<User> findByUsername(String username) {
         return users.findByUsername(username);
     }
+
+    public Optional<User> findByCredentials(String username, String password) {
+        for (User user : users) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                return Optional.of(user);
+            }
+        }
+        return Optional.empty();
+    }
 }
