@@ -1,2 +1,2 @@
 # Forum
-[![Build Status](https://travis-ci.org/anrgl/job4j_forum.svg?branch=main)](https://travis-ci.org/anrgl/job4j_forum)
+[![Build Status](https://travis-ci.com/anrgl/job4j_forum.svg?branch=main)](https://travis-ci.com/anrgl/job4j_forum)
