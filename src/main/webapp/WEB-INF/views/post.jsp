@@ -20,7 +20,7 @@
     <div class="row">
         <div class="post">
             <h2><c:out value="${post.name}"/></h2>
-            <small><c:out value="${post.created}"/></small>
+            <small><c:out value="${post.created.getTime()}"/></small>
             <p><c:out value="${post.description}"/></p>
         </div>
     </div>
