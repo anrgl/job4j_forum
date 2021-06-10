@@ -22,13 +22,20 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Тема</th>
+                <th scope="col" colspan="4">Тема</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><c:out value="${post.name}"/></td>
+                    <td><a href="<c:url value="/post?id=${post.id}"/>">Details</a></td>
+                    <td><a href="<c:url value="/post/edit?id=${post.id}" />">Edit</a></td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/post/delete?id=${post.id}" method="post">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
